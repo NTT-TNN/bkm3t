@@ -2,6 +2,8 @@
 
 ## Sơ đồ lắp mạch 
 ![](so_do_lap_mach_iot-maker.png)
+
+![](lap_mach.jpg)
 """TODO"""
 
 ## Hướng dẫn cài đặt Arduino IDE
