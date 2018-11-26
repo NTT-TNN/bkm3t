@@ -40,35 +40,31 @@ def get_features(data, path_save=None):
     return np.array(features)
 
 
-def train_svm(x, y, path_save=None):
+def train_svm(x, y):
     model = SVC()
     model.fit(x, y)
-    if path_save is not None:
-        pickle.dump(model, open(path_save, 'wb'))
+    pickle.dump(model, open('model_saved/svm.model', 'wb'))
     return model
 
 
-def train_knn(x, y, path_save=None):
+def train_knn(x, y):
     model = KNeighborsClassifier()
     model.fit(x, y)
-    if path_save is not None:
-        pickle.dump(model, open(path_save, 'wb'))
+    pickle.dump(model, open('model_saved/knn.model', 'wb'))
     return model
 
 
-def train_random_forest(x, y, path_save=None):
+def train_random_forest(x, y):
     model = RandomForestClassifier()
     model.fit(x, y)
-    if path_save is not None:
-        pickle.dump(model, open(path_save, 'wb'))
+    pickle.dump(model, open('model_saved/randomforest.model', 'wb'))
     return model
 
 
-def train_mlp(x, y, path_save=None):
+def train_mlp(x, y):
     model = MLPClassifier(early_stopping=True)
     model.fit(x, y)
-    if path_save is not None:
-        pickle.dump(model, open(path_save, 'wb'))
+    pickle.dump(model, open('model_saved/mlp.model', 'wb'))
     return model
 
 
@@ -80,13 +76,15 @@ def train_mlp(x, y, path_save=None):
 
 
 
-import preprocess
-with open('data/tay_len_xuong.txt', 'r') as f:
-    data = f.read()
-    # print(data)
-df = preprocess.parse_data(data)
+# import preprocess
+# with open('data/tay_len_xuong.txt', 'r') as f:
+#     data = f.read()
+#     # print(data)
+# df = preprocess.parse_data(data)
+#
+# seg = segment_window(df, 5)
+# features = get_features(seg, 'data/features.csv')
 
-seg = segment_window(df, 5)
-features = get_features(seg, 'data/features.csv')
-
-print(features.shape)
+import pand
+#
+# train_svm([[1, 3, 4], [2, 3, 4]], [1, 2])
