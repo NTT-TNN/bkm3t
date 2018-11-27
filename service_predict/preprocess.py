@@ -20,6 +20,7 @@ def parse_data(raw_data):
     raw_data = raw_data.replace('}, {', "};{")
     raw_data = raw_data.replace("'", '"')
     raw_data = raw_data.replace('}\n{', '};{')
+    raw_data = raw_data.replace('},{', '};{')
     # print("===================", raw_data)
     lines = raw_data.split(';')
 

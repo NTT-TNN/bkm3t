@@ -1,18 +1,18 @@
-from sklearn.decomposition import PCA
-import pandas as pd
-import matplotlib.pyplot as plt
-import numpy as np
-import pickle
-
-df_train_x = pd.read_csv('data/datatest.csv', header=None)
-df_train_y = pd.read_csv('data/datatest_y.txt', header=None)
-df_test_x = pd.read_csv('data/datatest_test_x.csv', header=None)
-df_test_y = pd.read_csv('data/datatest_test_y.txt', header=None)
-
-print(df_test_x.shape, df_test_y.shape)
-
-
-from sklearn.svm import SVC
+# from sklearn.decomposition import PCA
+# import pandas as pd
+# import matplotlib.pyplot as plt
+# import numpy as np
+# import pickle
+#
+# df_train_x = pd.read_csv('data/datatest.csv', header=None)
+# df_train_y = pd.read_csv('data/datatest_y.txt', header=None)
+# df_test_x = pd.read_csv('data/datatest_test_x.csv', header=None)
+# df_test_y = pd.read_csv('data/datatest_test_y.txt', header=None)
+#
+# print(df_test_x.shape, df_test_y.shape)
+#
+#
+# from sklearn.svm import SVC
 
 model = SVC()
 model.fit(df_train_x.values, df_train_y.values)
@@ -68,3 +68,6 @@ pickle.dump(model, open('model_saved/svm.model', 'wb'))
 #
 #
 # print(distances)
+
+
+def dtw()
