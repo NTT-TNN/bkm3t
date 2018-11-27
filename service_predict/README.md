@@ -16,7 +16,7 @@
 - method: post
 - data: list points of data, each point has yaw, pitch, roll, ax, ay, ax, timestamp
 - number of data: about 30 point
-- return: ['up', 'down', 'right', 'left', 'unknown']
+- return: ['up', 'down', 'right', 'left', 'in', 'out', 'fixedly', 'unknown']
 - [example gestures](https://github.com/NTT-TNN/bkm3t/tree/master/service_predict/test_example.txt)
 ## activity
 - link: localhost:5000/predict_activity

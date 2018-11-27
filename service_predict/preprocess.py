@@ -20,6 +20,7 @@ def parse_data(raw_data):
     raw_data = raw_data.replace('}, {', "};{")
     raw_data = raw_data.replace("'", '"')
     raw_data = raw_data.replace('}\n{', '};{')
+    raw_data = raw_data.replace('},{', '};{')
     # print("===================", raw_data)
     lines = raw_data.split(';')
 
@@ -34,6 +35,8 @@ def parse_data(raw_data):
         try:
             line_json = json.loads(line)
             # print(line_json)
+            if len(line_json) < 5:
+                continue
         except Exception as e:
             print(e)
             continue

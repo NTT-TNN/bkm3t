@@ -24,8 +24,10 @@ app = Flask(__name__)
 def predict_gesture():
     if request.method == 'POST':
         data = request.data.decode('utf8')
+        # print(data)
         data = parse_data(data)
         result = get_gestures(data)
+        print(result)
         if result is not None:
             return result
         else:

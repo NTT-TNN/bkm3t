@@ -6,6 +6,7 @@ min_window_size = 30
 max_window_size = 100
 threshold_mean = 0
 threshold_std = 0.5
+threshold_change = 1
 
 
 def segment_window(data, array, min_window_size, max_window_size):
@@ -15,7 +16,7 @@ def segment_window(data, array, min_window_size, max_window_size):
     for i, value in enumerate(array[1:]):
         if value >= 0 > prev_point or value < 0 <= prev_point:
             if max_window_size >= i - start_index_window >= min_window_size:
-                print(start_index_window, i)
+                # print(start_index_window, i)
                 index_segment.append((start_index_window, i))
                 start_index_window = i
         prev_point = value
@@ -31,6 +32,7 @@ def get_features(data):
     features = list()
     for window in data:
         window = window[:, 1:]
+        print(len(window))
         max_win = np.amax(window, axis=0)
         min_win = np.amin(window, axis=0)
         mean_win = np.mean(window, axis=0)
@@ -103,3 +105,43 @@ def get_gestures(data):
 # df = preprocess.parse_data(data)
 # print(df.shape)
 # pred = get_gestures(df)
+
+
+def get_gestures(data):
+    ax = data[['ax']].values
+    ay = data[['ay']].values
+    az = data[['az']].values
+
+    ax_change = np.amax(ax) - np.amin(ax)
+    ay_change = np.amax(ay) - np.amin(ay)
+    az_change = np.amax(az) - np.amin(az)
+
+    if ax_change > ay_change and ax_change > az_change:
+        if ax_change > threshold_change:
+            sequence_max_min = np.argmax(ax) - np.argmin(ax)
+            if sequence_max_min > 0:
+                return 'in'
+            else:
+                return 'out'
+        else:
+            return 'fixedly'
+    elif ay_change > ax_change and ay_change > az_change:
+        if ay_change > threshold_change:
+            sequence_max_min = np.argmax(ay) - np.argmin(ay)
+            if sequence_max_min > 0:
+                return 'left'
+            else:
+                return 'right'
+        else:
+            return 'fixedly'
+
+    elif az_change > ax_change and az_change > ay_change:
+        if az_change > threshold_change:
+            sequence_max_min = np.argmax(az) - np.argmin(az)
+            if sequence_max_min > 0:
+                return 'down'
+            else:
+                return 'up'
+        else:
+            return 'fixedly'
+
