@@ -18,9 +18,9 @@ services:
     #       - 3306:3306
     #     networks:
     #       - bkm3t-net
-    predict:
-        image: python:3
-        restart: always
+    predict_service:
+        build: ./service_predict
+        # restart: always
         volumes:
            - ./service_predict:/service_predict
         ports:
@@ -33,7 +33,7 @@ services:
         #    - mqtt:mqtt
         #    # - mysql:mysql
         #    - nodered:nodered
-        command: [bash, -c, "cd /service_predict && pip3 install -r requirements.txt && pip3 install numpy Flask scipy pandas scikit_learn && python3 service.py"]
+        # command: [bash, -c, "cd /service_predict && pip3 install -r requirements.txt && pip3 install numpy Flask scipy pandas scikit_learn && python3 service.py"]
 
     nodered:
         image: nodered/node-red-docker
