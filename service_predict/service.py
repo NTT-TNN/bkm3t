@@ -27,6 +27,7 @@ def predict_gesture():
         # print(data)
         data = parse_data(data)
         result = get_gestures(data)
+        print(result)
         if result is not None:
             return result
         else:

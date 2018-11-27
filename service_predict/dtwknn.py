@@ -155,11 +155,12 @@ class KnnDtw(object):
         return mode_label.ravel(), model_proba.ravel()
 
 
-x = np.array([1, 1, 2, 3, 2, 0])
-y = np.array([0, 1, 1, 2, 3, 2, 1])
-test = KnnDtw()
-print(test._dtw_distance(x, y, lambda x,y: (x-y)**2))
+# x = np.array([1, 1, 2, 3, 2, 0])
+# y = np.array([0, 1, 1, 2, 3, 2, 1])
+# test = KnnDtw()
+# print(test._dtw_distance(x, y, lambda x,y: (x-y)**2))
 
 # test.fit([[1, 4, 5, 3]], [1])
 # a = test.predict([1,2, 4, 6, 3, 4, 6])
 # print(a)
+
