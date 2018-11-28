@@ -6,6 +6,7 @@ from sklearn.svm import SVC
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.neural_network import MLPClassifier
 from sklearn.ensemble import RandomForestClassifier
+from sklearn import naive_bayes
 
 
 def segment_window(data, time_split):
@@ -38,6 +39,12 @@ def get_features(data, path_save=None):
         df = pd.DataFrame(features)
         df.to_csv(path_save, header=False, index=False)
     return np.array(features)
+
+
+def train_naive_bayes(x, y):
+    model = naive_bayes.GaussianNB()
+    model.fit(x, y)
+    pickle.dump(model, open('model_saved/naive_bayes.model', 'wb'))
 
 
 def train_svm(x, y):

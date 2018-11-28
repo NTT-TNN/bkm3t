@@ -24,8 +24,11 @@ app = Flask(__name__)
 def predict_gesture():
     if request.method == 'POST':
         data = request.data.decode('utf8')
-        # print(data)
+        print(data)
         data = parse_data(data)
+        a = data[['ax', 'ay', 'az']]
+        a.to_csv('data/templace_right.csv', index=False)
+        print(data)
         result = get_gestures(data)
         print(result)
         if result is not None:
