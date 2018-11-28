@@ -28,6 +28,7 @@ for exp_id, user_id, act_id, start, end in label.values:
 
     acc_win = df_acc_exp.iloc[start:end].values
     gyro_win = df_gyro_exp.iloc[start: end].values
+    # print(end - start)
 
     # print(acc_win)
 
